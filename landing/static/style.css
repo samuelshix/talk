@@ -1,0 +1,90 @@
+/* .offline, .online {
+    height: .5em;
+    width: .5em;
+    border-radius: 1em;
+    display: inline-block;
+    float: right;
+    margin-top: .3em;
+}
+.online {
+    background: rgb(100, 212, 100);
+    box-shadow: 0 0 .5em green;
+}
+.offline {
+    background: grey;
+} */
+#room-name-input {
+    display: inline-block;
+    position: relative;
+
+}
+
+.last-login {
+    visibility: hidden;
+    width: 15em;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: .3em;
+    border-radius: 6px;
+    font-size: .7em;
+
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+}
+
+a#room-name-input:hover .last-login {
+    visibility: visible;
+}
+
+.notification {
+    height: auto !important;
+
+}
+
+.navsec {
+    margin-right: 2em;
+    float: left;
+    color: black
+}
+
+textarea,
+#id_product_price,
+#id_product_name {
+    border: none;
+    background-color: rgba(255, 255, 255, 0.678) !important;
+    box-shadow: 0 0 1em rgb(0 0 0 / 20%);
+    backdrop-filter: blur(6px);
+}
+
+#id_product_image {
+    box-shadow: None;
+    background-color: none;
+}
+
+#id_product_description {
+    width: 100%;
+}
+
+.theme {
+    color: white;
+    margin: .3em auto;
+}
+
+.theme:hover {
+    color: grey;
+}
+
+input {
+    box-shadow: 0 0 1em rgb(0 0 0 / 20%);
+}
+
+body {
+    background: url(background.png);
+    background-repeat: no-repeat;
+}
+
+.signup_bg {
+    margin-top: 10%;
+}

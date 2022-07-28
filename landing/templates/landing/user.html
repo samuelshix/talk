@@ -1,0 +1,26 @@
+{% extends 'landing/index.html' %}
+{% block content %}
+<div class="post col-md-6 offset-3">
+    <h1>{{ user.username}}'s profile</h1>
+    <div style="float:right">
+    {% if request.user != user %}
+    <b><a href="/send_friend_request/{{user.id}}">{{message}}</a></b>
+    {% endif %}
+    </div>
+    <p>Joined: {{user.date_joined}}</p>
+    <p>{{noposts}}</p>
+
+</div>
+
+{% for post in posts %}
+<div class="post-outer col-md-6 offset-3"  style="cursor: pointer;" onclick="window.location='{%url 'innerpost' post.id%}'">
+<div class="post">
+    Posted by <a href="">{{post.user}}</a>
+    <hr>
+    <h3>{{ post.title }} <span style='font-size: .5em; margin-left: 1em;'><b> Likes: {{ post.likes }} | Comments: 0</b></span></h3>
+    <p>{{ post.description }}</p>
+    <br>
+</div>
+</div>
+{% endfor %}
+{% endblock content %}

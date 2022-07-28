@@ -1,0 +1,66 @@
+{% extends 'landing/base.html' %}
+{% block content%}
+<div class="col-md-3 col-sm-6 msg-col">
+    <a href="{% url 'index' %}" class="btn btn-light">Back to Feed</a>
+</div>
+<div class="col-md-3"></div>
+<div class="post col-md-6 offset-3">
+    Posted by <a href="{% url 'user' post.user.username %}">{{post.user}}</a>
+    <hr>
+    <h3>{{ post.title }} <span style='font-size: .5em; margin-left: 1em;'><b> Likes: {{ post.likes }} | Comments: {{post.comments}}</b></span></h3>
+    <p>{{ post.description }}</p>
+    {% if post.image_url %}
+    <img class="img-upload"src="{{post.image_url.url}}" alt="Image">
+    {% endif %}
+    <!-- <form method="post">
+        {% csrf_token %}
+        <label for="like">Like this post:</label>
+        <button id="like" type="submit">
+            <span class="stackIcons">
+                <i class="fas fa-heart"></i>
+            </span>
+        </button>
+    </form> -->
+    {% if post in liked_users %}
+    <form method="post" style="margin-bottom: 4em;">
+        {% csrf_token %}
+        <input class="button" name=unlike type="submit" value="unlike" />
+    </form>
+    {% else %}
+    <form method="post" style="margin-bottom: 4em;">
+        {% csrf_token %}
+        <input class="button" name=like type="submit" value="Like" />
+    </form>
+    {% endif %}
+    <hr>
+    <form method="post">
+        {% csrf_token %}
+        <label for="comment">Leave a comment</label>
+        <div style="display:flex;flex-direction: row;">
+        <textarea class="form-control" name="comment" id="comment" rows="3"></textarea>
+        <button style="margin-left: 1em;" type="submit">Submit</button>
+        </div>
+    </form>
+    <h3 style="margin-top: 2em;">Comments:</h3>
+    {% for comment in comments reversed %}
+        <div class="single-comment">
+            <p>{{comment.description}}</p>
+            <p>Posted by <strong>{{comment.user}}</strong> on <i>{{comment.time}}</i></p>
+        </div>
+    {% endfor %}
+</div>
+<script>
+    $(document).ready(function(){
+       $( "#like" ).click(function() {
+        if($(this).hasClass('fas')) {
+            $( this ).removeClass( "fas" );
+            $( this ).addClass( "far" );
+        } else {
+            $( this ).removeClass( "far" );
+            $( this ).addClass( "fas" );
+        }
+
+     });
+ });
+ </script>
+{% endblock%}

@@ -1,0 +1,37 @@
+{% extends 'landing/base.html' %}
+{% block content%}
+<div class="col-md-3 col-sm-6 msg-col">
+    <a href="{% url 'marketplace_main' %}" class="btn btn-light">Back to market place</a>
+</div>
+<div class="col-md-3"></div>
+<div class="post col-md-6 offset-3">
+	<hr>
+	<h3>{{product.product_name}}<span style='font-size: .5em; margin-left: 1em;'><b> Likes: {{ product.likes }} | Comments: {{product.comments}}</b></span></h3>
+    {% if product.product_image %}
+    <img class="img-upload"src="{{product.product_image.url}}" alt="">
+    {% endif%}
+    <p>{{product.product_description}}</p>
+    <p>Price : {{product.product_price}}</p>
+    <a href="{% url 'products_pay' product.id%}" class="btn btn-light">Buy!</a>
+    <form method="post" style="margin-bottom: 4em;">
+        {% csrf_token %}
+        <input class="button" name=like type="submit" value="like" />
+    </form>
+    <hr>
+    <form method="post">
+        {% csrf_token %}
+        <label for="comment">Leave a comment</label>
+        <div style="display:flex;flex-direction: row;">
+        <textarea class="form-control" name="comment" id="comment" rows="3"></textarea>
+        <button style="margin-left: 1em;" type="submit">Submit</button>
+        </div>
+    </form>
+    <h3 style="margin-top: 2em;">Comments:</h3>
+    {% for comment in comments reversed %}
+        <div class="single-comment">
+            <p>{{comment.description}}</p>
+            <p>Posted by <strong>{{comment.user}}</strong> on <i>{{comment.time}}</i></p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock%}

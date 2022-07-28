@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>if friend</h2>
+<h3>state</h3>
+<input type="button" value="userName" >
+</body>
+</html>
+<script>
+  document.querySelector('input').onclick = function () {
+    var xhr = new XMLHttpRequest();
+
+    xhr.open('post','http://127.0.0.1:8000/if_friend', true);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.onload = function () {
+        const obj = xhr.responseText
+        alert(obj)
+    };
+    xhr.send('account1=01&account2=02');
+  }
+</script>

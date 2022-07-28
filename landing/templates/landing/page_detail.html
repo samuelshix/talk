@@ -1,0 +1,56 @@
+{% extends 'landing/base.html' %}
+{% block content%}
+<div class="col-md-3"></div>
+<div class="post col-md-6 offset-3">
+    <p><b>About:</b> {{page.description}}</p>
+    {% if request.user not in members %}
+    <hr>
+    <form method="post">
+        {% csrf_token %}
+        <input class="button" name=join type="submit" value="Join" />
+    </form>
+    {% endif %}
+    <div class="dropdown"style="float: right;">
+        <a class="dropdown-toggle text-dark" data-bs-toggle="dropdown" role="button" aria-expanded="false"><p style="margin:0; display: inline-block;">Members</p></a>
+        <ul class="dropdown-menu dropdown-menu-right">
+            {% for user in members %}
+            <li><a href="{% url 'user' user.username %}">{{ user.username }}</a></li>
+            {% endfor %}
+        </ul>
+      </div>
+      
+	<h1>{{page.name}}</h1>
+    <a href="{% url 'pages_pay' page.id %}" class="btn btn-light">Donate</a>
+
+    {% if page.page_img %}
+    <img class="img-upload"src="{{page.page_img.url}}" alt="">
+    {% endif%}
+    
+    {% if request.user in members%}
+    <form method="post" style="margin-bottom: 4em;">
+        {% csrf_token %}
+        <input class="button" name=Leave type="submit" value="Leave" />
+    </form>
+    <form method="post">
+        {% csrf_token %}
+        <label for="comment">Leave a comment</label>
+        <div style="display:flex;flex-direction: row;">
+        <textarea class="form-control" name="comment" id="comment" rows="3"></textarea>
+        <button style="margin-left: 1em;" type="submit">Submit</button>
+        </div>
+    </form>
+
+    {% else %}
+    <br>
+    <h3>Join the page to comment!</h3>
+    {% endif %}
+    <h3 style="margin-top: 2em;">Comments:</h3>
+    {% for comment in comments reversed %}
+        <div class="single-comment">
+            <p>{{comment.description}}</p>
+            <p>Posted by <strong>{{comment.user}}</strong> on <i>{{comment.time}}</i></p>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock%}

@@ -1,0 +1,36 @@
+{% extends 'landing/index.html' %}
+{% block content %}
+<div class="col-md-3 col-sm-6 msg-col">
+    <a href="{% url 'index' %}" class="btn btn-light">Back to Feed</a>
+</div>
+<div class="post col-md-6 offset-3">
+    <h1>Donate to {{page_name}}</h1>
+    <form class="post-form needs-validation" method="post" novalidate>
+        <div class="form-group">
+            <h2></h2>
+          <label for="bio">Amount</label>
+          <textarea placeholder="$ Amount" class="form-control" id="Description" name="amount" rows="1" required>$ </textarea>
+        </div>
+        <div class="form-group">
+            <h2></h2>
+          <label for="bio">Name on card</label>
+          <textarea placeholder="Name" class="form-control" id="Description" name="name" rows="1" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="bio">Card Number</label>
+            <textarea placeholder="Card Number" class="form-control" id="Description" name="number" rows="1" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="bio">Expiration Date</label>
+            <textarea placeholder="Expiration Date" class="form-control" id="Description" name="date" rows="1" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="bio">CVV</label>
+            <textarea placeholder="CVV" class="form-control" id="Description" name="cvv" rows="1" required></textarea>
+          </div>
+        <!-- <label class="form-label" for="customFile" enctype="multipart/form-data">Upload a file</label>
+        <input type="file" class="form-control" id="customFile" name="upload_file" /> -->
+        <button type="submit">Submit</button>
+      </form>
+</div>
+{% endblock %}

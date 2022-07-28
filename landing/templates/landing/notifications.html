@@ -1,0 +1,23 @@
+{% extends 'landing/base.html' %}
+{% block content%}
+<div class="row">
+    <div class="col-md-2 msg-col">
+    </div>
+    <div class="col-md-7" style="float:left";>
+        <h4>Notifications</h4>
+        {% for notification in notifications reversed %}
+        <div class="page-outer"  style="cursor: pointer;" onclick="window.location='{%url 'index' %}'">
+            <div class="post innerpost notification">
+
+                <h3>{{notification.notification_type}}</h3><span style="display:inline-block">{{notification.time}}</span>
+                <p>{{notification.description}}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="col-md-1"></div>
+
+</div>
+
+</div>
+{% endblock%}

@@ -1,0 +1,13 @@
+{% extends 'landing/index.html' %}
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-md-7 post">
+              <form method = "post" class="post-form" name="upload_file" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ image_form.as_p }}
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock content %}

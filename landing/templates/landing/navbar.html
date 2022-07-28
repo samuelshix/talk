@@ -1,0 +1,39 @@
+
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="{% url 'index' %}">Talk</a>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      </ul>
+      {% if user.is_authenticated %}
+      <div class="col-md-7 msg-col">
+        <a href="{% url 'create_page' %}" class="navsec">Create a Page!</a>
+        <a href="{% url 'marketplace_main' %}" class="navsec">Talk Marketplace!</a>
+        <a href="{% url 'post' %}" class="navsec">Create post</a>
+        <!-- <a class="nav-item create-post-btn" href="{% url 'post' %}">Create post</a> -->
+      </div class="col-md-7">
+      <!-- search form -->
+      <form class="d-flex" method="get">
+        {% csrf_token %}
+        <div class="input-group">
+        <input type="text" class="form-control search" name="q" placeholder="Search Users" aria-label="Username" aria-describedby="basic-addon1">
+  
+        </div>
+      </form>
+      
+      <div class="prof-btn nav-item dropdown" style="margin-right: 2em;">
+        <a style="padding:0; display: inline-block;" class="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" role="button" aria-expanded="false"><p style="margin:0; display: inline-block;">{{ request.user.username }}</p></a>
+        <ul class="dropdown-menu dropdown-menu-right">
+          <li><a class="dropdown-item" href="{% url 'notifications' %}">Notifications</a></li>
+          <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+          <li><a class="dropdown-item" href="{% url 'account_logout' %}">Sign Out</a></li>
+        </ul>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</nav>
+

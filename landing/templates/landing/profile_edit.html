@@ -1,0 +1,23 @@
+{% extends 'landing/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-5 col-sm-6">
+            <a href="{% url 'profile' %}" class="btn btn-light">Back To Profile</a>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-6 col-sm-12 border-bottom post">
+            <h1>Update Your Profile</h1>
+            <form method = "post" class="post-form" name="upload_file" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ profile_edit_form.as_p }}
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

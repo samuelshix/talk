@@ -1,0 +1,313 @@
+:root {
+    --accent-clr:rgb(187, 117, 245);
+}
+* {
+    transition: .3s;
+}
+
+p,h1,h2,h3 {
+    font-family: 'Lato'
+}
+h1 {
+    font-weight: 600;
+    font-size: 3.3em;
+}
+
+.display-2 {
+    font-weight: 600 !important;
+    margin-top: 3em;
+}
+#container, .signup_block,.pwreset_block,textarea,input#chat-message-input,.navbar, .dropdown-menu.show,.post,#id_title,#id_description,#id_name {    background-color: rgba(255, 255, 255, 0.678)!important;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(6px);
+}
+#navbar {
+    margin: 1em;
+    border-radius: 1em;
+}
+.search-user {
+    margin-right: 2em;
+}
+.text-dark {
+    padding-left: 0;
+}
+.navsec:hover {
+    color: var(--accent-clr);
+}
+body {
+    background: url(p-background.png) !important;
+    background-repeat:no-repeat;
+}
+
+.textinput {
+    background: rgba(255, 255, 255, 0.678)!important;
+    box-shadow: 0 0 .5em rgba(0, 0, 0, 0.2);
+    border:none;
+    margin-bottom: 1em !important;
+    padding: 1em;
+    border-radius: .5em;
+    width: 100%
+}
+input {
+    border: none;
+    padding: .5em;
+}
+body .navbar {
+    background: rgba(255, 255, 255, 0.678);
+    padding: 1.2em 1em;
+    margin-bottom: 3em;
+}
+.nav-item {
+    margin-left: 1em;
+}
+#profile {
+    background: rgb(255, 202, 177) !important;
+    color: white !important;
+}
+.col-md-7 input[type="button"] {
+    width: 5em;
+    background: rgb(0, 0, 0);
+    color: white;
+}
+/* allauth css */
+.textinput {
+    background-image: none !important;
+    margin-bottom: 3em;
+}
+.login_block {
+    margin: 0;
+    position: absolute;
+    width: 40%;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.signup_block, .pwreset_block {
+    border-radius: 2em !important;
+    padding: 2em;
+}
+#login {
+    background: rgb(255, 202, 177) !important;
+    color: white;
+    font-weight: 700;
+    border: none;
+    padding: .7em 0;
+    width: 10em;
+}
+#div_id_remember {
+    margin-top: 2em;
+}
+.signup_bg {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 100%;
+    
+}
+.navbar-brand {
+    font-family: 'Lato';
+    font-weight: 600;
+}
+a {
+    text-decoration: none;
+    color: var(--accent-clr);
+    transition: .1s;
+}
+a:hover {
+    color:black;
+}
+.nav-item {
+    text-decoration: none;
+    color: black;
+    transition: .3s;
+    font-size: 1.3em;
+    font-family: 'Lato';
+    font-weight: 700;
+}
+.nav-item:hover {
+    color: var(--accent-clr);
+}
+.create-post-btn {
+    font-size: 1em;
+    font-weight: 300;
+}
+.messages {
+    bottom: 2em;
+    position: fixed;
+}
+.messages input{
+ width: 50%;
+ color:  #ffffff;
+ width: 35%;
+ padding: 8px;
+ border-radius: 2em;
+ margin: 15px 0px;
+ font-family: 'Poppins', sans-serif;
+}
+.messages {
+    margin-top: 3em;
+    margin-left: 3em;
+    color:  #ffffff;
+    width: 35%;
+    padding: 8px;
+    border-radius: 2em;
+    margin: 15px 0px;
+    font-family: 'Poppins', sans-serif;
+}
+.message {
+    color:  #ffffff;
+    width: 35%;
+    padding: 8px;
+    border-radius: 2em;
+    margin: 15px 0px;
+    font-family: 'Poppins', sans-serif;
+}
+#chat-log {
+    margin-top: 3em;
+    width: 100%;
+    height: 20em;
+    border: none;
+    resize: none;
+    outline: none;
+}
+#chat-message-input {
+    width: 100%;
+}
+#chat-message-submit {
+    border-radius: 2em;
+    width: 100%;
+    margin-left: 1em;
+}
+button, #chat-message-submit,a.btn,.post-form button,.button {
+    transition: .3s;
+    border-radius: 1em;
+    background: black;
+    color: white;
+    border: none;
+}
+button:hover, #chat-message-submit:hover,a.btn:hover,.post-form button:hover,.button:hover {
+    background: var(--accent-clr);
+    color: white;
+}
+.navbar-brand:hover,.dropdown-toggle:hover {
+    color: var(--accent-clr) !important;
+}
+#chat-log, #chat-message-input {
+    border-radius: 1em;
+    background: rgba(255, 255, 255, 0.842);
+}
+
+textarea:focus, input:focus {
+    outline: none;
+    border: none;
+    resize: none;
+}
+.dropdown-menu {
+    padding-left: .5em;
+}
+#room-name-input {
+    color: black;
+    text-decoration: none;
+}
+.py-4 {
+    font-weight: 700;
+}
+.card {
+    margin-bottom: 2em;
+}
+div.dropdown-menu.show {
+    border-radius: 1em;
+    padding: 1em;
+    border-bottom-left-radius: 0;
+
+}
+.dropdown-menu.show a {
+    font-size: 1em;
+}
+#room-name-input:hover {
+    color: var(--accent-clr);
+}
+#dropdownMenuButton {
+    border-radius: 2em;
+    background-color: black;
+    border-top-left-radius: 0;
+}
+#dropdownMenuButton:focus {
+    outline: none !important;
+    border: none;
+    box-shadow: none;
+
+}
+.msg-col {
+    margin-left: 3em;
+    margin-right: 3em;
+}
+.post-form .form-group {
+    margin-bottom: 2em;
+}
+.post-form .form-control {
+  border-radius: 1em;  
+  background-color: rgba(255, 255, 255, 0.678)!important;
+  box-shadow: 0 0 1em rgb(0 0 0 / 20%);
+  backdrop-filter: blur(6px);
+}
+#title.form-control {
+    font-size: 2em;
+    /* padding: 0 1em !important; */
+    border-radius: .5em;  
+}
+.post-form label {
+    font-weight: 500;
+    font-size: 2em;
+}
+.post-form button {
+    margin-top: 3em;
+    float: right;
+}
+
+.post {
+    margin-bottom: 2em;
+    background-color: white;
+    padding: 1em;
+    border-radius: 1em;
+}
+
+.single-comment {
+    margin-bottom: 1em;
+}
+.single-comment p {
+    margin-bottom: 0;
+}
+.img-upload {
+    width: 100%;
+    margin: 1em auto;
+}
+#id_title, #id_description {
+    width: 100%;
+    border: none;
+}
+.innerpost {
+    height: 15em;
+    overflow: auto;
+}
+.innerpost h3,.page-outer span {
+    display:inline-block;
+}
+.page-outer span {
+    margin-left: 1em;
+    border-radius: .5em;
+    padding: .3em;
+    background: var(--accent-clr);
+}
+.tag {
+    margin-left: 1em;
+    border-radius: .5em;
+    padding: .3em;
+    background: var(--accent-clr);
+}
+.post .btn {
+    margin: 1em auto;
+}

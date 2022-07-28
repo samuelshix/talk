@@ -1,0 +1,31 @@
+{% extends 'landing/base.html' %}
+{% block content %}
+<div class="col-md-3 msg-col">
+    <a href="{% url 'register_product' %}" class="btn btn-light">Add product</a>
+</div>
+<div class="row">
+    <div class="col-md-2 msg-col">
+    </div>
+    <div class="col-md-7" style="float:left";>
+        <h4>Market</h4>
+        {% for product in products %}
+        	<div class="post-outer"  style="cursor: pointer;" onclick="window.location='{%url 'product_detail' product.id%}'">
+        	<div class="post innerpost">
+            	Posted by <a href="{% url 'user' product.user %}">{{product.user}}</a><span class="tag">Product</span>
+            	<hr>
+            	<h3>{{ product.product_name }} <span style='font-size: .5em; margin-left: 1em;'></h3>
+            	{% if product.product_image %}
+            	<img class="img-upload"src="{{product.product_image.url}}" alt="">
+            	{% endif %}
+            	<p>{{ product.product_description }}</p>
+            	<br>
+        	</div>
+        	</div>
+        {% endfor %}
+    </div>
+    <div class="col-md-1"></div>
+
+</div>
+
+</div>
+{% endblock content %}

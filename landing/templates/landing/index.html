@@ -1,0 +1,129 @@
+{% extends 'landing/base.html' %}
+
+{% block content %}
+<style>
+h5 {
+  background-color: rgb(255, 202, 177);
+  padding: 1em;
+}
+</style>
+
+{% if not user.is_authenticated %}
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10 col-sm-12 text-center">
+            <h1 class="display-2">Talk, on Talk!</h1>
+            <p class="mt-3 lead">Connect with your friends and family!</p>
+            <div class="d-flex justify-content-center mt-5">
+                <a href="{% url 'account_login' %}" class="btn btn-light mr-2" style="margin-right: 1em;">Log In</a>
+                <a href="{% url 'account_signup' %}" class="btn btn-dark">Register</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<!-- chat room selection -->
+<!-- <button class="chat-button">Messaging</button> -->
+
+<div class="row">
+    <div class="col-md-2 msg-col">
+        <div class="messages" style="float:right";>
+            <div class="dropup">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+                  Live chat!
+                </button>
+                <div class="dropdown-menu" aria-labelledby="Live chat!">
+                    {% for x in userlist %}
+                        {% if x != user %}
+                        <a id="room-name-input" value="{{x.id}}">{{x.username}}<span class="last-login"> Last logged in: {{x.last_login}}</span></a>
+                        <br>
+                            <!-- {% if x.is_active %}
+                                <a id="room-name-input" value="{{x.id}}">{{x.username}}</a><div class="online"></div><br>
+                            {% else %}
+                                <a id="room-name-input" value="{{x.id}}">{{x.username}}</a><div class="offline"></div><br>
+                            {% endif %} -->
+                        {% endif%}
+                    {% endfor %}        
+                </div>
+              </div>
+        </div>
+    </div>
+    <div class="col-md-7" style="float:left";>
+        <h4>Feed</h4>
+        {% for post in posts %}
+        <div class="post-outer"  style="cursor: pointer;" onclick="window.location='{%url 'innerpost' post.id%}'">
+        <div class="post innerpost">
+            Posted by <a href="{% url 'user' post.user %}">{{post.user}}</a><span class="tag">Post</span>
+            <hr>
+            <h3>{{ post.title }} <span style='font-size: .5em; margin-left: 1em;'><b> Likes: {{ post.likes }} | Comments: {{ post.comments}}</b></span></h3>
+            {% if post.image_url %}
+            <img class="img-upload"src="{{post.image_url.url}}" alt="">
+            {% endif %}
+            <p>{{ post.description }}</p>
+            <br>
+        </div>
+        </div>
+        {% endfor %}
+        {% for page in pages %}
+        <div class="page-outer"  style="cursor: pointer;" onclick="window.location='{%url 'page_detail' page.id%}'">
+            <div class="post innerpost">
+
+                <h3>{{page.name}}</h3><span style="display:inline-block">Page</span>
+                {% if page.page_img %}
+                <img class="img-upload"src="{{page.page_img.url}}" alt="">
+                {% endif %}
+                <p>{{page.description}}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="col-md-1"></div>
+
+</div>
+
+</div>
+<script>
+    const messages = document.getElementsByClassName("messages");
+    const chatbtn = document.getElementsByClassName("chat-button");
+
+    chatbtn.onclick = function revealmsg() {
+        messages.style.display="block";
+        console.log("Hi");
+    }
+</script>
+<script>
+    function encode(string) {
+        var number = "0x";
+        var length = string.length;
+        for (var i = 0; i < length; i++)
+            number += string.charCodeAt(i).toString(16);
+        return number;
+    }
+    var roomNames = document.querySelectorAll('#room-name-input')
+    for (let i = 0; i < roomNames.length; i++) {     
+        roomName=roomNames[i]
+        if(parseInt("{{user.id}}")>roomName.getAttribute("value")) {
+            roomName.href =  window.location.href + 'chat/' + '{{user.id}}' + 'a'+ roomName.getAttribute("value") + '/';
+        } else {
+            roomName.href =  window.location.href + 'chat/' + roomName.getAttribute("value") + 'a'+ '{{user.id}}' + '/';
+        }
+        console.log(roomName.href)
+
+    }
+    //  if (user.id >)
+    //  roomName.href =  window.location.href + 'chat/' + '{{user.id}}' + roomName.getAttribute("value") + '/';
+    // document.querySelector('#room-name-input').focus();
+    // roomName.onkeyup = function(e) {
+    //     if (e.keyCode === 13) {  // enter, return
+    //         document.querySelector('#room-name-submit').click();
+    //     }
+    // };
+
+    // document.querySelector('#room-name-input').onclick = function(e) {
+    //     console.log(roomName.getAttribute("value"))
+    //     window.location.pathname = '/chat/' + roomName.value + '/';
+    // };
+</script>
+
+{% endif %}
+{% endblock content %}

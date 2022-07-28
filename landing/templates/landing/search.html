@@ -1,0 +1,23 @@
+{% extends 'landing/index.html' %}
+{% block content %}
+<div class="post col-md-6 offset-3">
+    <h1>Results:</h1>
+{% if user_results %}
+<h2>Users</h2>
+{% for result in user_results %}
+    <a href="{% url 'user' result%}">{{result}}</a><br>
+{% endfor %}
+<hr>
+{% endif %}
+
+{% if post_results %}
+<h2>Posts</h2>
+{% for result in post_results %}
+    <a style="font-size: 2em;" href="{% url 'innerpost' result.id%}">{{result.title}}</a><br>
+    <b>By {{result.user}}</b>
+    <p>{{result.description}}</p>
+{% endfor %}
+{% endif %}
+
+</div>
+{% endblock %}
